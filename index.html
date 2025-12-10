@@ -1,0 +1,2579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ganpat University - Official Info Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* ====== RESET ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background: radial-gradient(circle at top, #fdf3f3 0, #f5f5f5 40%, #f0f0f0 100%);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ====== GLOBAL LAYOUT ====== */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p.section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* ====== HEADER / NAVBAR ====== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            /* BG image + overlay */
+            background-image:
+                linear-gradient(rgba(105, 136, 162, 0.92), rgba(105, 136, 162, 0.92)),
+                url("https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=1600");
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #b62025, #ff6a55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 14px rgba(182, 32, 37, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .logo:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 8px 18px rgba(182, 32, 37, 0.6);
+        }
+
+        .logo:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 11px;
+            font-weight: normal;
+            text-transform: none;
+            color: #f0f0f0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            padding: 6px 10px;
+            border-radius: 20px;
+            transition: background 0.3s, color 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(182, 32, 37, 0.1);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .nav-links a:active {
+            transform: translateY(1px) scale(0.97);
+            background: rgba(182, 32, 37, 0.18);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            font-size: 13px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #b62025, #ff6a55);
+            color: #fff;
+            box-shadow: 0 3px 10px rgba(182, 32, 37, 0.5);
+        }
+
+        .btn-outline {
+            background: #fff;
+            color: #b62025;
+            border: 1px solid #b62025;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+        }
+
+        .btn:active {
+            transform: translateY(1px) scale(0.97);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ====== HERO SECTION (guni WITH 6-SLIDE BG) ====== */
+        .guni {
+            position: relative;
+            color: #fff;
+            min-height: 70vh;
+            overflow: hidden;
+        }
+
+        .guni::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.1), transparent 55%);
+            z-index: 0;
+        }
+
+        /* Sliding background layers */
+        .guni-bg-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            animation: guniBgSlider 18s infinite linear;
+            z-index: -1;
+        }
+
+        /* BG Images (6 slides) */
+        .guni-bg-1 {
+            background-image: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url("GUNI4.jpg");
+            animation-delay: 0s;
+        }
+
+        .guni-bg-2 {
+            background-image: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url("GUNI7.jpg");
+            animation-delay: 3s;
+        }
+
+        .guni-bg-3 {
+            background-image: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url("GUNI2.jpg");
+            animation-delay: 6s;
+        }
+
+        .guni-bg-4 {
+            background-image: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url("GUNI6.jpg");
+            animation-delay: 9s;
+        }
+
+        .guni-bg-5 {
+            background-image: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url("GUNI3.jpg");
+            animation-delay: 12s;
+        }
+
+        .guni-bg-6 {
+            background-image: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url("GUNI5.jpg");
+            animation-delay: 15s;
+        }
+
+        /* Fade animation */
+        @keyframes guniBgSlider {
+            0% {
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+            }
+
+            25% {
+                opacity: 1;
+            }
+
+            30% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: center;
+            min-height: 70vh;
+            padding: 50px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            font-size: 11px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-badge:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .hero-title span {
+            color: #3c00ff;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            max-width: 500px;
+            margin-bottom: 20px;
+            color: #e1dada;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .hero-tags span {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(185, 219, 17, 0.795);
+            transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-tags span:hover {
+            background: rgba(166, 200, 0, 0.95);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.28);
+        }
+
+        .hero-tags span:active {
+            transform: translateY(1px) scale(0.97);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .hero-highlight {
+            font-size: 14px;
+            color: #ffb3c2;
+        }
+
+        .hero-card {
+            background: rgba(169, 185, 178, 0.93);
+            border-radius: 20px;
+            padding: 22px 20px;
+            color: #000000;
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(24, 24, 239, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 45px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .hero-card p {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 14px;
+        }
+
+        .hero-card-list {
+            font-size: 12px;
+            margin-bottom: 14px;
+            padding-left: 18px;
+        }
+
+        .hero-card-list li {
+            margin-bottom: 4px;
+        }
+
+        .hero-card small {
+            display: block;
+            margin-top: 10px;
+            font-size: 11px;
+            color: #777;
+        }
+
+        /* ====== STATS SECTION (gnu) ====== */
+        .gnu {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .stat-box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px 18px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-box:active {
+            transform: translateY(1px) scale(0.97);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 22px;
+            font-weight: bold;
+            color: #b62025;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* ====== ABOUT SECTION ====== */
+        #about {
+            position: relative;
+            background: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.65),
+                    rgba(0, 0, 0, 0.35)),
+                url("guni7.jpg") center/cover fixed no-repeat;
+            color: #fff;
+        }
+
+        .about-overlay {
+            background: linear-gradient(to bottom, rgba(99, 145, 158, 0.496), rgba(0, 0, 0, 0.75));
+            padding: 70px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text-box {
+            background: rgba(255, 255, 255, 0.09);
+            padding: 20px 22px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .about-text-box h2.section-title {
+            text-align: left;
+            margin-bottom: 14px;
+            color: #fff;
+        }
+
+        .about-text-box p {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: #f1f1f1;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.16);
+            border-radius: 12px;
+            padding: 12px;
+            font-size: 12px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .about-card h4 {
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #ffd400;
+        }
+
+        .about-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+        }
+
+        .about-photo-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .photo-slot {
+            border-radius: 16px;
+            border: 2px dashed rgba(255, 255, 255, 0.6);
+            padding: 35px 10px;
+            text-align: center;
+            font-size: 13px;
+            color: #f5f5f5;
+            background: rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        .photo-slot.small {
+            padding: 22px 10px;
+        }
+
+        .photo-slot span {
+            display: block;
+            font-size: 11px;
+            margin-top: 4px;
+            opacity: 0.8;
+        }
+
+        .photo-slot img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+            margin-bottom: 8px;
+            object-fit: cover;
+            max-height: 220px;
+        }
+
+        .photo-slot:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.95);
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ====== PROGRAMS / COURSES SECTION (DEPARTMENT-WISE) ====== */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .tab-pill {
+            font-size: 12px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid #ddd;
+            cursor: default;
+            background: #fff;
+            transition: background 0.25s, color 0.25s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .tab-pill.highlight {
+            background: #b62025;
+            color: #fff;
+            border-color: #b62025;
+            box-shadow: 0 3px 8px rgba(182, 32, 37, 0.35);
+        }
+
+        .tab-pill:hover {
+            background: #fff6f6;
+            border-color: #f3c2c2;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .tab-pill.highlight:hover {
+            background: #a01c22;
+            box-shadow: 0 5px 14px rgba(182, 32, 37, 0.55);
+        }
+
+        .tab-pill:active {
+            transform: translateY(1px) scale(0.97);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .dept-section {
+            margin-bottom: 26px;
+        }
+
+        .dept-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #b62025;
+        }
+
+        .dept-title small {
+            display: block;
+            font-size: 12px;
+            color: #777;
+            font-weight: normal;
+        }
+
+        .dept-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            border-top: 3px solid #f0d0d0;
+            margin-top: 8px;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .dept-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .dept-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .dept-header:hover {
+            background: #fff9f9;
+        }
+
+        .dept-header-left {
+            max-width: 60%;
+        }
+
+        .dept-header p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* ===== DEPARTMENT HEADER PHOTOS – SIDE BY SIDE ===== */
+        .dept-photos {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            /* 2 images side by side */
+            gap: 15px;
+            max-width: 800px;
+            /* text + photos sath-sath fit ho jaaye */
+        }
+
+        .dept-photos img {
+            width: 800px;
+            height: 300px;
+            /* fixed height so dono same size dikhen */
+            object-fit: scale-down;
+            border-radius: 14px;
+            border: 1px solid #eee;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .dept-photos img:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .dept-photos img:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .dept-photos .photo-placeholder {
+            width: 90px;
+            height: 60px;
+            border-radius: 10px;
+            border: 2px dashed #d5c0c0;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4px;
+            color: #999;
+            background: #fffdfd;
+        }
+
+        .dept-toggle-indicator {
+            font-size: 18px;
+            margin-left: 10px;
+            color: #b62025;
+            transition: transform 0.2s;
+        }
+
+        .dept-card.active .dept-toggle-indicator {
+            transform: rotate(180deg);
+        }
+
+        .dept-body {
+            padding: 0 16px 16px;
+            display: none;
+            border-top: 1px solid #f3e2e2;
+        }
+
+        .dept-card.active .dept-body {
+            display: block;
+        }
+
+        .dept-note {
+            font-size: 11px;
+            color: #888;
+            margin: 12px 0;
+        }
+
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .course-card {
+            background: #faf7f7;
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 12px;
+            border: 1px solid #f0d0d0;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+            border-color: #e3b1b1;
+            background: #fff9f9;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .course-title {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .course-meta {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .course-meta span {
+            display: block;
+        }
+
+        .course-more {
+            font-size: 11px;
+            margin-top: 4px;
+            color: #b62025;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .course-more:hover {
+            color: #8f151b;
+        }
+
+        /* ====== ADMISSIONS SECTION ====== */
+        .admission-wrapper {
+            background: linear-gradient(120deg, #b62025, #e06b1b);
+            border-radius: 22px;
+            padding: 30px 24px;
+            color: #fff;
+            display: grid;
+            grid-template-columns: 2fr 1.2fr;
+            gap: 30px;
+            align-items: center;
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .admission-steps {
+            display: grid;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .admission-step {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .admission-step span {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            margin-top: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .admission-step:hover span {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .admission-sidebox {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 14px 16px;
+            font-size: 12px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .admission-sidebox:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .admission-sidebox h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .admission-sidebox ul {
+            margin-left: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* ====== CAMPUS LIFE SECTION ====== */
+        .campus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .campus-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+            font-size: 13px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .campus-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 22px rgba(0, 0, 0, 0.12);
+        }
+
+        .campus-card:active {
+            transform: translateY(1px) scale(0.97);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+        }
+
+        .campus-card h3 {
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: #b62025;
+        }
+
+        .campus-card p {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .campus-photos {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        /* 6 image slots + 4:3 ratio */
+        .campus-photo-slot {
+            border-radius: 18px;
+            border: 2px dashed #d3b3b3;
+            padding: 10px;
+            text-align: center;
+            font-size: 13px;
+            color: #070202;
+            background: #fffdfd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        .campus-photo-slot img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            /* 400x300 ratio */
+            border-radius: 14px;
+            object-fit: cover;
+            margin-bottom: 6px;
+        }
+
+        .campus-photo-slot span {
+            display: block;
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        .campus-photo-slot:hover {
+            transform: translateY(-3px);
+            border-color: #c59898;
+            background: #fff7f7;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.16);
+        }
+
+        .campus-photo-slot:active {
+            transform: translateY(1px) scale(0.97);
+        }
+
+        /* ===== PROJECT TEAM SECTION ===== */
+        .team-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: radial-gradient(circle at top, #050816, #02040a 60%, #000000);
+            color: #ffffff;
+        }
+
+        .team-section h2 {
+            font-size: 28px;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+
+        .team-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 20px;
+            padding: 25px 22px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .team-card {
+            background: rgba(8, 16, 32, 0.95);
+            border-radius: 16px;
+            padding: 18px 20px;
+            width: 350px;
+            border: 1px solid #00ff6e;
+            box-shadow: 0 0 12px rgba(42, 13, 231, 0.897);
+            text-align: left;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 18px rgba(255, 0, 0, 0.7);
+        }
+
+        /* ===== IMAGE BOX 300x250 ===== */
+        .photo-box {
+            width: 300px;
+            height: 250px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #ff00f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-card h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+            color: #00ff99;
+        }
+
+        .team-card p {
+            font-size: 12px;
+            margin: 4px 0;
+            color: #e4e4e4;
+        }
+
+        .team-card p span {
+            font-weight: bold;
+            color: #a8ffce;
+        }
+
+        /* ===== REVIEW SECTION (INTERACTIVE) ===== */
+        .review-section {
+            padding: 50px 0 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .review-container {
+            width: 85%;
+            max-width: 900px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 10px 35px rgba(0, 255, 100, 0.28);
+            text-align: center;
+            border: 1px solid rgba(0, 255, 100, 0.4);
+        }
+
+        .review-container h2 {
+            color: #ffcf72;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            font-size: 22px;
+        }
+
+        /* Inputs row */
+        .review-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .review-input-group input {
+            width: 30%;
+            min-width: 200px;
+            padding: 10px 12px;
+            border-radius: 25px;
+            border: 1px solid #00ff83;
+            background: rgba(20, 40, 20, 0.45);
+            color: #ffffff;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .review-input-group input::placeholder {
+            color: #bbbbbb;
+        }
+
+        /* Stars */
+        .rating-box {
+            font-size: 24px;
+            letter-spacing: 6px;
+            margin-bottom: 4px;
+        }
+
+        .rating-box .star {
+            cursor: pointer;
+            color: #555;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .rating-box .star:hover {
+            transform: translateY(-2px);
+            color: gold;
+        }
+
+        .rating-box .star.active {
+            color: gold;
+        }
+
+        .rating-hint {
+            font-size: 11px;
+            color: #cccccc;
+            margin-bottom: 10px;
+        }
+
+        /* Feedback textarea */
+        .review-section textarea {
+            width: 100%;
+            height: 120px;
+            border-radius: 14px;
+            border: 1px solid #00ff83;
+            background: rgba(15, 30, 15, 0.45);
+            padding: 12px;
+            font-size: 12px;
+            color: #ffffff;
+            outline: none;
+            margin-bottom: 18px;
+        }
+
+        .review-section textarea::placeholder {
+            color: #cccccc;
+        }
+
+        /* Submit button */
+        .submit-review {
+            width: 100%;
+            padding: 12px;
+            border-radius: 28px;
+            border: none;
+            background: linear-gradient(90deg, #00ff82, #8aff95);
+            color: #000;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .submit-review:hover {
+            box-shadow: 0 0 12px rgba(0, 255, 100, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* Submitted reviews list */
+        .reviews-list {
+            width: 85%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .review-item {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 14px;
+            padding: 14px 16px;
+            border: 1px solid rgba(0, 255, 100, 0.35);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+            color: #f4f4f4;
+            font-size: 13px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .review-header h3 {
+            font-size: 15px;
+            margin: 0;
+            color: #a8ffce;
+        }
+
+        .review-meta {
+            font-size: 11px;
+            color: #bbbbbb;
+        }
+
+        .review-meta span:not(:last-child)::after {
+            content: " • ";
+        }
+
+        .review-stars {
+            font-size: 18px;
+            color: gold;
+        }
+
+        .review-message {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+
+            .review-container,
+            .reviews-list {
+                width: 92%;
+            }
+
+            .review-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* ====== CONTACT SECTION ====== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-info p {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .contact-form {
+            background: #fff;
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
+        }
+
+        .contact-form h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 7px 9px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 12px;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .form-group input:hover,
+        .form-group select:hover,
+        .form-group textarea:hover {
+            border-color: #b62025;
+            background: #fffdfd;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #b62025;
+            box-shadow: 0 0 0 2px rgba(182, 32, 37, 0.16);
+            background: #fffefe;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        /* ====== FOOTER ====== */
+        footer {
+            background: #111;
+            color: #ccc;
+            padding: 25px 0 10px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.3fr;
+            gap: 20px;
+            font-size: 12px;
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 5px;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            font-size: 12px;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+            transform: translateX(2px);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 11px;
+            margin-top: 10px;
+            border-top: 1px solid #333;
+            padding-top: 8px;
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 950px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                padding: 40px 0;
+            }
+
+            .hero-card {
+                max-width: 380px;
+                margin: 0 auto;
+            }
+
+            .gnu {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-grid,
+            .admission-wrapper,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .course-list {
+                grid-template-columns: 1fr;
+            }
+
+            .campus-grid,
+            .campus-photos {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .gnu,
+            .campus-grid,
+            .campus-photos {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-title {
+                font-size: 26px;
+            }
+
+            .about-text-box {
+                padding: 16px;
+            }
+
+            /* hero height mobile me thoda kam */
+            .guni {
+                min-height: 60vh;
+            }
+
+            .hero-inner {
+                padding: 30px 0;
+            }
+
+            /* dept images / header mobile fix */
+            .dept-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .dept-header-left {
+                max-width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .dept-photos {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ====== HEADER / NAVBAR ====== -->
+    <header>
+        <div class="container nav">
+            <div class="logo-area">
+                <a href="https://www.ganpatuniversity.ac.in" class="logo">
+                    <img src="GUNI.jpeg" alt="Ganpat University Logo">
+                </a>
+                <div class="logo-text">
+                    Ganpat University
+                    <span>Kherva, Mehsana, Gujarat, India</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#stats">Highlights</a>
+                <a href="#programs">Programs</a>
+                <a href="#admission">Admissions</a>
+                <a href="#campus">Campus Life</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn btn-outline">Virtual Tour</button>
+                <button class="btn btn-primary">Apply Now</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ====== HERO SECTION (guni with 6-slide BG) ====== -->
+    <section class="guni">
+        <!-- Sliding background layers -->
+        <div class="guni-bg-slide guni-bg-1"></div>
+        <div class="guni-bg-slide guni-bg-2"></div>
+        <div class="guni-bg-slide guni-bg-3"></div>
+        <div class="guni-bg-slide guni-bg-4"></div>
+        <div class="guni-bg-slide guni-bg-5"></div>
+        <div class="guni-bg-slide guni-bg-6"></div>
+
+        <div class="container hero-inner">
+            <div>
+                <div class="hero-badge">UGC Recognised • NAAC Accredited</div>
+                <h1 class="hero-title">
+                    Empowering Futures at <span>Ganpat University</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Ganpat University is a private, evolving campus that offers
+                    multidisciplinary education in engineering, management, pharmacy,
+                    computer applications, sciences, agriculture, maritime studies and more.
+                </p>
+
+                <div class="hero-tags">
+                    <span>60+ UG Programs</span>
+                    <span>40+ PG Programs</span>
+                    <span>Ph.D. in Multiple Disciplines</span>
+                    <span>Industry Collaborations</span>
+                </div>
+
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Admission Enquiry 2025</button>
+                    <button class="btn btn-outline">Download Information Booklet</button>
+                </div>
+
+                <div class="hero-highlight">
+                    Scholarships, modern laboratories, residential campus, and strong placement support.
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <h3>Quick Admission Info (2026)</h3>
+                <ul class="hero-card-list">
+                    <li>After 10th: Diploma Programs</li>
+                    <li>After 12th: B.Tech, BBA, BCA, B.Sc, B.Com, B.Pharm, etc.</li>
+                    <li>After Graduation: MBA, M.Tech, MCA, M.Sc, M.Pharm, etc.</li>
+                    <li>Doctoral Programs (Ph.D) in various disciplines</li>
+                </ul>
+                <button class="btn btn-primary" style="width: 100%; margin-bottom: 4px;">
+                    Schedule Online Counseling
+                </button>
+                <small>*For exact dates, eligibility and fees please refer to official notices.</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== STATS SECTION (gnu) ====== -->
+    <section id="stats">
+        <div class="container">
+            <h2 class="section-title">University At a Glance</h2>
+            <p class="section-subtitle">
+                Important numbers that reflect the scale and impact of Ganpat University.
+            </p>
+
+            <div class="gnu">
+                <div class="stat-box">
+                    <div class="stat-number">2005</div>
+                    <div class="stat-label">Year of Establishment</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">28</div>
+                    <div class="stat-label">Constituent Institutes</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">60+</div>
+                    <div class="stat-label">Undergraduate Programs</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Postgraduate Programs</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">7000+</div>
+                    <div class="stat-label">New Students Every Year</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">1200+</div>
+                    <div class="stat-label">Faculty & Staff</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">5200</div>
+                    <div class="stat-label">Boys Hostel Capacity</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2600</div>
+                    <div class="stat-label">Girls Hostel Capacity</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ABOUT SECTION ====== -->
+    <section id="about">
+        <div class="about-overlay">
+            <div class="container about-grid">
+                <div class="about-text-box">
+                    <h2 class="section-title">About Ganpat University</h2>
+                    <p>
+                        Ganpat University is promoted by Ganpat Vidyanagar, a trust that aims to
+                        provide quality higher education with strong industry orientation.
+                        The campus is located at Kherva, Mehsana-Gozaria highway, spread across
+                        hundreds of acres with modern infrastructure.
+                    </p>
+                    <p>
+                        The University offers diploma, undergraduate, postgraduate and doctoral
+                        programs in diverse academic disciplines such as Engineering & Technology,
+                        Management, Computer Applications, Pharmacy, Sciences, Agriculture,
+                        Maritime Studies, Design, and more.
+                    </p>
+                    <p>
+                        Teaching-learning is supported by advanced laboratories, industry-linked
+                        projects, research centers and active collaboration with national and
+                        international organizations.
+                    </p>
+
+                    <div class="about-highlights">
+                        <div class="about-card">
+                            <h4>Vision</h4>
+                            <p>
+                                To be a globally recognized university known for innovation,
+                                research, and value-based education that nurtures socially responsible professionals.
+                            </p>
+                        </div>
+                        <div class="about-card">
+                            <h4>Mission</h4>
+                            <p>
+                                To provide outcome-based education, establish industry–academia partnerships,
+                                encourage entrepreneurship, and support all-round development of students.
+                            </p>
+                        </div>
+                        <div class="about-card">
+                            <h4>Core Values</h4>
+                            <p>
+                                Integrity, Excellence, Inclusiveness, Innovation and Social Commitment.
+                            </p>
+                        </div>
+                        <div class="about-card">
+                            <h4>Approvals & Recognition</h4>
+                            <p>
+                                UGC recognized; programs approved by relevant councils (like AICTE, PCI, etc.) as
+                                applicable.
+                                Please verify latest status on the official website.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ABOUT PHOTO GRID WITH IMAGES -->
+                <div class="about-photo-grid">
+                    <!-- PHOTO 1 -->
+                    <div class="photo-slot">
+                        <img src="GUNI4.jpg" alt="Ganpat University Main Campus">
+                        <span>Main Entrance / Aerial View</span>
+                    </div>
+
+                    <!-- PHOTO 2 -->
+                    <div class="photo-slot small">
+                        <img src="GUNI8.jpg" alt="Ganpat University Academic Block">
+                        <span>Academic Block</span>
+                    </div>
+
+                    <!-- PHOTO 3 -->
+                    <div class="photo-slot small">
+                        <img src="GUNI3.jpg" alt="Ganpat University Hostel Area">
+                        <span>Garden </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PROGRAMS / COURSES SECTION (DEPARTMENT-WISE) ====== -->
+    <section id="programs">
+        <div class="container">
+            <h2 class="section-title">Programs & Courses</h2>
+            <p class="section-subtitle">
+                Information are given below
+            </p>
+
+            <!-- Small chips just to show department names -->
+            <div class="tabs">
+                <div class="tab-pill highlight">Engineering & Technology</div>
+                <div class="tab-pill highlight">Management Studies</div>
+                <div class="tab-pill highlight">Computer Applications</div>
+                <div class="tab-pill highlight">Pharmacy</div>
+                <div class="tab-pill highlight">Sciences & Agriculture</div>
+                <div class="tab-pill highlight">Maritime / Design & Others</div>
+            </div>
+
+            <!-- ===== ENGINEERING & TECHNOLOGY ===== -->
+            <div class="dept-section" id="dept-engg">
+                <div class="dept-title">
+                    Faculty of Engineering & Technology
+                    <small>B.Tech, M.Tech and related diploma programmes</small>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header">
+                        <div class="dept-header-left">
+                            <p>Click to view B.Tech / M.Tech branches, eligibility, approx fees & facilities.</p>
+                        </div>
+                        <div class="dept-photos">
+                            <img src="GUNI11.jpg" alt="Engineering Lab - Ganpat University">
+                            <img src="GUNI10.jpg" alt="Engineering Workshop / Classroom - Ganpat University">
+                        </div>
+                        <div class="dept-toggle-indicator">+</div>
+                    </div>
+                    <div class="dept-body">
+                        <p class="dept-note">
+                            *B.Tech tuition fees commonly around ₹1.6 lakh per year (subject to Fee Regulatory
+                            Committee & university revisions). Hostel, exam and other charges extra. Always refer
+                            to latest official notification before applying.
+                        </p>
+
+                        <div class="course-list">
+                            <div class="course-card">
+                                <div class="course-title">B.Tech in Computer Engineering / CSE Specializations</div>
+                                <div class="course-meta">
+                                    <span>Duration: 4 years • Full-time</span>
+                                    <span>Eligibility: 10+2 with Physics, Chemistry, Mathematics; admission
+                                        generally via ACPC / GUJCET / JEE norms.</span>
+                                    <span>Approx Tuition Fee: ~₹1,60,000 per year*</span>
+                                </div>
+                                <ul>
+                                    <li>Specializations like AI, Cyber Security, Big Data, Cloud, Mobile Apps, etc.</li>
+                                    <li>Modern labs, coding clubs, industry projects & internships.</li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://uvpce.guni.ac.in/programmes/after-12th-programs-undergraduate-programs/engineering-technology/b-tech-computer-engineering"
+                                    target="_blank">More info & official curriculum &raquo;</a>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">B.Tech in Mechanical / Mechatronics / Automobile</div>
+                                <div class="course-meta">
+                                    <span>Duration: 4 years • Full-time</span>
+                                    <span>Eligibility: 10+2 (PCM) with required percentage as per norms.</span>
+                                    <span>Approx Tuition Fee: ~₹1,60,000 per year*</span>
+                                </div>
+                                <ul>
+                                    <li>Thermal, design, manufacturing, automation, EV & robotics exposure.</li>
+                                    <li>Workshops, CAD/CAM labs, industrial tours, projects.</li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://www.ganpatuniversity.ac.in/programmes/after-12th-programs-undergraduate-programs/engineering-technology/bachelor-of-technology-in-mechanical-engineering"
+                                    target="_blank">Mechanical Engineering official page &raquo;</a>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">B.Tech in Civil / Electrical / EC / ICT / IT</div>
+                                <div class="course-meta">
+                                    <span>Duration: 4 years • Full-time</span>
+                                    <span>Eligibility: 10+2 with PCM; admission as per ACPC / GUJCET norms.</span>
+                                    <span>Approx Tuition Fee: ~₹1,60,000 per year*</span>
+                                </div>
+                                <ul>
+                                    <li>Labs for structures, power systems, electronics, communication, networking.</li>
+                                    <li>Site visits, design projects, industry seminars.</li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://uvpce.guni.ac.in/programmes/after-12th-programs-undergraduate-programs/engineering-technology"
+                                    target="_blank">All Engineering branches list &raquo;</a>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">Marine, Naval Architecture & Petrochemical Engineering</div>
+                                <div class="course-meta">
+                                    <span>Duration: 4 years • Residential (for many programmes)</span>
+                                    <span>Eligibility: 10+2 (PCM) with medical fitness as per DG Shipping (for
+                                        marine).</span>
+                                    <span>Approx Fee: Higher than regular B.Tech due to training / residential
+                                        components.</span>
+                                </div>
+                                <ul>
+                                    <li>On-campus marine training facilities, ship-in-campus, simulators (as per
+                                        institute).</li>
+                                    <li>Placement assistance with shipping & energy sector companies.</li>
+                                </ul>
+                                <a class="course-more" href="https://www.ganpatuniversity.ac.in/courses"
+                                    target="_blank">See marine & petrochemical programmes &raquo;</a>
+                            </div>
+                        </div>
+
+                        <p class="dept-note">
+                            For full list of all engineering programmes (B.Tech, M.Tech, diplomas, integrated),
+                            visit the official programme finder / online admission page.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== MANAGEMENT STUDIES ===== -->
+            <div class="dept-section" id="dept-mgmt">
+                <div class="dept-title">
+                    Faculty of Management Studies (FMS)
+                    <small>BBA, B.Com (Hons.), MBA, PGDM and related programmes</small>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header">
+                        <div class="dept-header-left">
+                            <p>Click to view BBA / MBA programmes with eligibility, approx fees & facilities.</p>
+                        </div>
+                        <div class="dept-photos">
+                            <img src="GUNI14.jpg" alt="Management Classroom - Ganpat University">
+                            <img src="GUNI13.jpg" alt="Seminar / Placement Activity - Ganpat University">
+                        </div>
+                        <div class="dept-toggle-indicator">+</div>
+                    </div>
+                    <div class="dept-body">
+                        <p class="dept-note">
+                            *BBA fees generally between ~₹75,000 – ₹1,05,000 per year (specialization ke hisaab se).
+                            MBA tuition around ~₹1,40,000 – ₹1,60,000 per year (approx, specialization wise). Values
+                            subject to change.
+                        </p>
+
+                        <div class="course-list">
+                            <div class="course-card">
+                                <div class="course-title">BBA (General / Hons. with Specializations)</div>
+                                <div class="course-meta">
+                                    <span>Duration: 3 years • Full-time</span>
+                                    <span>Eligibility: 10+2 in any stream with English as a subject from a recognized
+                                        board.</span>
+                                </div>
+                                <ul>
+                                    <li>Specializations: Marketing, Finance, HR, Business Analytics, Logistics,
+                                        Retail etc.</li>
+                                    <li>Case studies, presentations, industrial visits, soft-skill development.</li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://www.ganpatuniversity.ac.in/programmes/after-12th-programs-undergraduate-programs/management-studies"
+                                    target="_blank">All BBA / UG management programmes &raquo;</a>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">B.Com (Hons.) & Integrated Management Programmes</div>
+                                <div class="course-meta">
+                                    <span>Duration: 3 years (UG) / 5 years (integrated, where offered)</span>
+                                    <span>Eligibility: 10+2 (Commerce / relevant stream) as per programme norms.</span>
+                                </div>
+                                <ul>
+                                    <li>Focus on accounting, taxation, finance, banking & business law.</li>
+                                    <li>Opportunities for professional courses (CA/CS/CMA coaching ecosystem).</li>
+                                </ul>
+                                <span class="course-more">More details on institute-wise websites &raquo;</span>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">MBA (Full-time)</div>
+                                <div class="course-meta">
+                                    <span>Duration: 2 years • Full-time</span>
+                                    <span>Eligibility: Graduation (10+2+3) in any discipline with required %
+                                        + entrance score (CMAT / CAT / others as notified).</span>
+                                    <span>Approx Tuition Fee: ~₹1.4–1.6 lakh per year*</span>
+                                </div>
+                                <ul>
+                                    <li>Specializations: Marketing, Finance, HR, IB, Agribusiness, Financial
+                                        Services, etc.</li>
+                                    <li>Case-study pedagogy, internships, projects, placement support.</li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://www.ganpatuniversity.ac.in/programmes/after-graduation-pg-programs/management-studies/master-of-business-administration"
+                                    target="_blank">MBA official page &raquo;</a>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">PGDM / Specialized PG Programmes</div>
+                                <div class="course-meta">
+                                    <span>Duration: 2 years • Full-time</span>
+                                    <span>Eligibility: Graduation with required percentage, entrance / interview as per
+                                        institute rules.</span>
+                                </div>
+                                <ul>
+                                    <li>Industry-oriented curriculum, domain-specific training & certifications.</li>
+                                    <li>Guest lectures, live projects, corporate interface cell.</li>
+                                </ul>
+                                <span class="course-more">Check respective institute website for details &raquo;</span>
+                            </div>
+                        </div>
+
+                        <p class="dept-note">
+                            Complete fee structure for different BBA / MBA specializations mil jayega
+                            management college ke official fee-structure PDF me.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== COMPUTER APPLICATIONS ===== -->
+            <div class="dept-section" id="dept-ca">
+                <div class="dept-title">
+                    Faculty of Computer Applications (AMPICS / related institutes)
+                    <small>BCA, BSc (IT/CA&IT), MCA & Integrated BCA–MCA</small>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header">
+                        <div class="dept-header-left">
+                            <p>Click to view BCA / MCA programmes with eligibility, approx fees & facilities.</p>
+                        </div>
+                        <div class="dept-photos">
+                            <img src="GUNI15.jpg" alt="Computer Lab - Ganpat University">
+                            <img src="GUNI16.jpg" alt="Project / Hackathon - Ganpat University">
+                        </div>
+                        <div class="dept-toggle-indicator">+</div>
+                    </div>
+                    <div class="dept-body">
+                        <p class="dept-note">
+                            *BCA tuition around ~₹70,000 per year. MCA around ~₹1,40,000 per year (approx). Exact fee
+                            programme & year ke hisaab se change ho sakta hai.
+                        </p>
+
+                        <div class="course-list">
+                            <div class="course-card">
+                                <div class="course-title">Bachelor of Computer Applications (BCA)</div>
+                                <div class="course-meta">
+                                    <span>Duration: 3 years • Full-time</span>
+                                    <span>Eligibility: 10+2 (any stream) with English as a subject, minimum
+                                        percentage as per university norms.</span>
+                                    <span>Approx Tuition Fee: ~₹70,000 per year*</span>
+                                </div>
+                                <ul>
+                                    <li>Focus: Programming, Databases, Web Development, Networking, basic AI & Data
+                                        Analytics.</li>
+                                    <li>Labs, mini-projects, seminars, industry certifications.</li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://www.ganpatuniversity.ac.in/programmes/after-12th-programs-undergraduate-programs/computer-applications/bachelor-of-computer-applications"
+                                    target="_blank">BCA official page &raquo;</a>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">BCA (Hons.) / BCA with AI-ML / Specialisations</div>
+                                <div class="course-meta">
+                                    <span>Duration: 3 years</span>
+                                    <span>Eligibility: 10+2 with English; some specializations may prefer Maths /
+                                        IT.</span>
+                                </div>
+                                <ul>
+                                    <li>Advanced curriculum in AI-ML, Data Science, Cloud, Cyber Security etc.</li>
+                                    <li>Extra lab hours, projects & internship support.</li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://www.ganpatuniversity.ac.in/programmes/after-12th-programs-undergraduate-programs/computer-applications"
+                                    target="_blank">All BCA variants list &raquo;</a>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">Integrated / Dual Degree BCA–MCA</div>
+                                <div class="course-meta">
+                                    <span>Duration: 5 years (Integrated)</span>
+                                    <span>Eligibility: 10+2 (any stream) with English; minimum % as per norms.</span>
+                                </div>
+                                <ul>
+                                    <li>Seamless progression from BCA level to MCA without separate re-admission.</li>
+                                    <li>Strong focus on advanced software engineering, research & industry projects.
+                                    </li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://www.ganpatuniversity.ac.in/programmes/after-12th-programs-undergraduate-programs/computer-applications/integrateddual-degree-bca-mca"
+                                    target="_blank">Integrated BCA–MCA official page &raquo;</a>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">Master of Computer Applications (MCA)</div>
+                                <div class="course-meta">
+                                    <span>Duration: 2 years • Full-time</span>
+                                    <span>Eligibility: Bachelor’s degree with required credits in Computer/IT/Maths,
+                                        as per AICTE norms.</span>
+                                    <span>Approx Tuition Fee: ~₹1,40,000 per year*</span>
+                                </div>
+                                <ul>
+                                    <li>Advanced programming, AI/ML, Data Science, Cloud & enterprise applications.</li>
+                                    <li>Research projects, internships, placement assistance.</li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://www.ganpatuniversity.ac.in/programmes/after-graduation-pg-programs/computer-applications/master-of-computer-applications"
+                                    target="_blank">MCA official page &raquo;</a>
+                            </div>
+                        </div>
+
+                        <p class="dept-note">
+                            Detailed semester-wise fee-structure & exam/hostel charges institute ke official fee
+                            notification me milenge.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== PHARMACY ===== -->
+            <div class="dept-section" id="dept-pharm">
+                <div class="dept-title">
+                    Faculty of Pharmacy
+                    <small>B.Pharm, M.Pharm & related programmes</small>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header">
+                        <div class="dept-header-left">
+                            <p>Click to view pharmacy programmes, eligibility & approx fees.</p>
+                        </div>
+                        <div class="dept-photos">
+                            <img src="GUNI18.jpg" alt="Pharmacy Lab - Ganpat University">
+                            <img src="GUNI17.jpg" alt="Research Instruments - Ganpat University">
+                        </div>
+                        <div class="dept-toggle-indicator">+</div>
+                    </div>
+                    <div class="dept-body">
+                        <p class="dept-note">
+                            *B.Pharm tuition around ~₹1.10–1.60 lakh per year (college & year ke hisaab se).
+                            M.Pharm tuition approx ~₹1.9 lakh per year. Exact amount FRC / university circular
+                            se confirm karein.
+                        </p>
+
+                        <div class="course-list">
+                            <div class="course-card">
+                                <div class="course-title">Bachelor of Pharmacy (B.Pharm)</div>
+                                <div class="course-meta">
+                                    <span>Duration: 4 years • Full-time</span>
+                                    <span>Eligibility: 10+2 with Physics & Chemistry + Mathematics / Biology from
+                                        recognized board; other norms as per PCI / ACPC.</span>
+                                </div>
+                                <ul>
+                                    <li>Modern pharmaceutics, pharmacology, pharmaceutical chemistry & analysis labs.
+                                    </li>
+                                    <li>Hospital / industry training, projects & research exposure.</li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://www.ganpatuniversity.ac.in/programmes/after-12th-programs-undergraduate-programs/pharmacy/bachelor-of-pharmacy"
+                                    target="_blank">B.Pharm official page &raquo;</a>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">M.Pharm (Pharmaceutics / Pharmacology etc.)</div>
+                                <div class="course-meta">
+                                    <span>Duration: 2 years</span>
+                                    <span>Eligibility: B.Pharm with required CGPA / percentage & valid score as
+                                        applicable.</span>
+                                </div>
+                                <ul>
+                                    <li>Advanced research facilities, industry-oriented dissertation work.</li>
+                                    <li>Opportunities in R&amp;D, QA/QC, regulatory affairs, academics.</li>
+                                </ul>
+                                <a class="course-more" href="https://skpcper.guni.ac.in/programmes" target="_blank">All
+                                    Pharmacy PG programmes &raquo;</a>
+                            </div>
+                        </div>
+
+                        <p class="dept-note">
+                            Pharmacy faculty ke official page par programme-wise syllabus, intake, approvals
+                            (AICTE/PCI/NBA) aur detailed fee-structure di hui hoti hai.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== SCIENCES & AGRICULTURE ===== -->
+            <div class="dept-section" id="dept-science">
+                <div class="dept-title">
+                    Sciences & Agriculture
+                    <small>B.Sc, M.Sc, B.Sc (Hons. Agriculture) & related programmes</small>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header">
+                        <div class="dept-header-left">
+                            <p>Click to view B.Sc / M.Sc / Agriculture programmes overview.</p>
+                        </div>
+                        <div class="dept-photos">
+                            <img src="GUNI20.jpg" alt="Science Lab - Ganpat University">
+                            <img src="GUNI21.jpg" alt="Fields / Green Campus - Ganpat University">
+                        </div>
+                        <div class="dept-toggle-indicator">+</div>
+                    </div>
+                    <div class="dept-body">
+                        <p class="dept-note">
+                            *Fees yahan programmes ke hisaab se vary karte hain (approx ~₹60,000–₹1,20,000 per year).
+                            Exact numbers official programme pages pe check karein.
+                        </p>
+
+                        <div class="course-list">
+                            <div class="course-card">
+                                <div class="course-title">B.Sc (Physics, Chemistry, Maths, Life Sciences, IT etc.)</div>
+                                <div class="course-meta">
+                                    <span>Duration: 3 years</span>
+                                    <span>Eligibility: 10+2 with Science / relevant subjects, as per programme
+                                        norms.</span>
+                                </div>
+                                <ul>
+                                    <li>Strong foundation in core sciences with lab-intensive learning.</li>
+                                    <li>Option to move into research, industry, teaching or higher studies (M.Sc).</li>
+                                </ul>
+                                <span class="course-more">More details on respective faculty websites &raquo;</span>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">B.Sc (Hons.) Agriculture & Allied Fields</div>
+                                <div class="course-meta">
+                                    <span>Duration: 4 years</span>
+                                    <span>Eligibility: 10+2 with Science (Biology / Agriculture / PCM-PCB) as per
+                                        norms.</span>
+                                </div>
+                                <ul>
+                                    <li>Focus on crop science, soil science, agribusiness, modern farming technologies.
+                                    </li>
+                                    <li>Field visits, practical trainings, research projects.</li>
+                                </ul>
+                                <a class="course-more"
+                                    href="https://adm.ganpatuniversity.ac.in/ProgramAvalilableforOA.aspx"
+                                    target="_blank">Check agriculture related programmes list &raquo;</a>
+                            </div>
+                        </div>
+
+                        <p class="dept-note">
+                            Pure list of B.Sc / M.Sc programmes and detailed syllabi GUNI ke programme finder me
+                            available hai.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== MARITIME / DESIGN / OTHERS ===== -->
+            <div class="dept-section" id="dept-special">
+                <div class="dept-title">
+                    Maritime Studies, Design, Architecture & Other Specialized Programmes
+                    <small>Marine, Nautical, Design, Architecture, Certificate & Short-term courses</small>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-header">
+                        <div class="dept-header-left">
+                            <p>Click to see unique programmes like Maritime, Design, Architecture and short-term
+                                courses.</p>
+                        </div>
+                        <div class="dept-photos">
+                            <img src="GUNI22.png" alt="Maritime / Ship Training - Ganpat University">
+                            <img src="GUNI10.jpg" alt="Design / Studio Facilities - Ganpat University">
+                        </div>
+                        <div class="dept-toggle-indicator">+</div>
+                    </div>
+                    <div class="dept-body">
+                        <p class="dept-note">
+                            For any exact fees or information considered to ckeck the official site.
+                        </p>
+
+                        <div class="course-list">
+                            <div class="course-card">
+                                <div class="course-title">Maritime & Nautical Programmes</div>
+                                <div class="course-meta">
+                                    <span>B.Tech Marine / Naval Architecture, GME, GP Ratings, ETO etc.</span>
+                                </div>
+                                <ul>
+                                    <li>DG Shipping approved courses (where applicable) with sea-training components.
+                                    </li>
+                                    <li>On-campus labs, simulators and ship-in-campus (as per institute).</li>
+                                </ul>
+                                <span class="course-more">Visit maritime institute website for full details
+                                    &raquo;</span>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-title">Design, Architecture & Creative Programmes</div>
+                                <div class="course-meta">
+                                    <span>Various UG / PG programmes in design & architecture (where offered).</span>
+                                </div>
+                                <ul>
+                                    <li>Studios, labs, portfolio development & creative workshops.</li>
+                                    <li>Industry projects & exhibitions.</li>
+                                </ul>
+                                <span class="course-more">Check university course list for available options
+                                    &raquo;</span>
+                            </div>
+                        </div>
+
+                        <p class="dept-note">
+                            Short-term / certificate courses (IT, management, skill-based) time-to-time launch hote
+                            rehte hain. Latest active courses ke liye official announcements follow karein.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ====== ADMISSIONS SECTION ====== -->
+    <section id="admission">
+        <div class="container">
+            <h2 class="section-title">Admissions 2025</h2>
+            <p class="section-subtitle">
+                Exact rules (quota, merit list, entrance tests,
+                important dates) Always checks from oringinal guni portal.
+            </p>
+
+            <div class="admission-wrapper">
+                <div>
+                    <h3 style="font-size:18px; margin-bottom:10px;">Step-by-step Admission Process</h3>
+                    <div class="admission-steps">
+                        <div class="admission-step">
+                            <span>1</span>
+                            <p>
+                                <strong>Check Eligibility:</strong>
+                                Choose your program (Diploma / UG / PG / Ph.D) and check minimum
+                                qualifying marks, required subjects and entrance exam criteria (if any).
+                            </p>
+                        </div>
+                        <div class="admission-step">
+                            <span>2</span>
+                            <p>
+                                <strong>Online Application:</strong>
+                                Fill the application form on the official admission portal, upload documents
+                                and pay the application fee.
+                            </p>
+                        </div>
+                        <div class="admission-step">
+                            <span>3</span>
+                            <p>
+                                <strong>Merit / Entrance / Counseling:</strong>
+                                Depending on the program, admission may be based on merit, entrance
+                                scores (like GUJCET/other) or personal interview/counseling.
+                            </p>
+                        </div>
+                        <div class="admission-step">
+                            <span>4</span>
+                            <p>
+                                <strong>Offer & Fee Payment:</strong>
+                                Selected candidates receive provisional admission offer and are required
+                                to confirm by paying fees within the given timeline.
+                            </p>
+                        </div>
+                        <div class="admission-step">
+                            <span>5</span>
+                            <p>
+                                <strong>Document Verification & Registration:</strong>
+                                Submit original documents for verification at campus or designated center,
+                                complete registration and join the orientation/induction program.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admission-sidebox">
+                    <h3>Important Links (Guni)</h3>
+                    <ul>
+                        <li>Admission Enquiry Form</li>
+                        <li>Program-wise Eligibility & Fees</li>
+                        <li>Scholarship & Education Loan Information</li>
+                        <li>Hostel & Transportation Details</li>
+                        <li>FAQ & Helpline Contacts</li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%; margin-bottom:6px;">
+                        Go to Admission Portal
+                    </button>
+                    <a href="https://www.ganpatuniversity.ac.in/StudentFirst/mobile/index.html" target="_blank">
+                        <button class="btn btn-outline" style="width: 100%;">
+                            Download Admission Booklet (PDF)
+                        </button>
+                    </a>
+
+                    <p style="margin-top:8px; font-size:11px;">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CAMPUS LIFE ====== -->
+    <section id="campus">
+        <div class="container">
+            <h2 class="section-title">Campus Life & Facilities</h2>
+            <p class="section-subtitle">
+                Ganpat University is known as Green Campus. It has many facilities , they are :
+            </p>
+
+            <div class="campus-grid">
+                <div class="campus-card">
+                    <h3>Hostel & Dining</h3>
+                    <p>
+                        Separate hostels for boys and girls with adequate capacity,
+                        mess facilities, Wi-Fi and basic amenities for comfortable stay.
+                    </p>
+                </div>
+                <div class="campus-card">
+                    <h3>Sports & Recreation</h3>
+                    <p>
+                        Grounds for cricket, football, athletics, indoor stadium,
+                        gymnasium and regular sports events to promote physical fitness.
+                    </p>
+                </div>
+                <div class="campus-card">
+                    <h3>Laboratories & Libraries</h3>
+                    <p>
+                        Well-equipped labs in engineering, pharmacy, sciences, computing
+                        and a central library with digital resources and reading halls.
+                    </p>
+                </div>
+                <div class="campus-card">
+                    <h3>Clubs & Activities</h3>
+                    <p>
+                        Technical, cultural, social and innovation clubs organize regular
+                        events, competitions, seminars and fests for holistic development.
+                    </p>
+                </div>
+                <div class="campus-card">
+                    <h3>Industry Connect</h3>
+                    <p>
+                        MoUs with companies, expert talks, industrial visits, internships
+                        and projects enhance employability and practical exposure.
+                    </p>
+                </div>
+                <div class="campus-card">
+                    <h3>Support & Wellbeing</h3>
+                    <p>
+                        Student counseling, grievance redressal cell, women development cell,
+                        anti-ragging committee and mentorship initiatives.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6 photo slots with 4:3 ratio -->
+            <div class="campus-photos">
+                <div class="campus-photo-slot">
+                    <a href="campus1.jpg" target="_blank">
+                        <img src="GUNI24.jpg" alt="Main campus building">
+                        <span>Main campus building</span>
+                    </a>
+                </div>
+                <div class="campus-photo-slot">
+                    <a href="campus2.jpg" target="_blank">
+                        <img src="GUNI25.jpg" alt="Sports ground / stadium">
+                        <span>Sports ground / stadium</span>
+                    </a>
+                </div>
+                <div class="campus-photo-slot">
+                    <a href="campus3.jpg" target="_blank">
+                        <img src="GUNI26.PNG" alt="Night view / fest">
+                        <span>Night view / fest</span>
+                    </a>
+                </div>
+                <div class="campus-photo-slot">
+                    <a href="campus4.jpg" target="_blank">
+                        <img src="GUNI27.jpg" alt="Health Centre">
+                        <span>Health Centre</span>
+                    </a>
+                </div>
+                <div class="campus-photo-slot">
+                    <a href="campus5.jpg" target="_blank">
+                        <img src="GUNI28.jpg" alt="Canteen">
+                        <span>Canteen</span>
+                    </a>
+                </div>
+                <div class="campus-photo-slot">
+                    <a href="campus6.jpg" target="_blank">
+                        <img src="GUNI23.jpg" alt="Auditorium">
+                        <span>Auditorium</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ====== CAMPUS LIFE ====== -->
+    <section id="campus">
+        ...
+    </section>
+
+    <!-- ====== PROJECT TEAM SECTION ====== -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2>Our Project Team</h2>
+
+            <div class="team-container">
+
+                <!-- MEMBER 1 -->
+                <div class="team-card">
+                    <div class="photo-box">
+                        <img src="MEMB1.jpg" alt="Team Member 1">
+                    </div>
+                    <h3>ANSHU KUMAR SAH</h3>
+                    <p><span>T. No:</span> T25162201082</p>
+                    <p><span>Branch:</span> B.Tech CSE (AI & ML)</p>
+                    <p><span>Batch:</span> 2025–2029</p>
+                    <p><span>College:</span> Ganpat University</p>
+                    <p><span>Skills:</span> HTML, Web Design, Documentation. </p>
+                    <p><span>Phone:</span> +91-7654283098</p>
+                    <p><span>Email:</span> anshusaha380t@gmail.com</p>
+                </div>
+
+                <!-- MEMBER 2 -->
+                <div class="team-card">
+                    <div class="photo-box">
+                        <img src="MEMB2.jpg" alt="Team Member 2">
+                    </div>
+                    <h3>NITISH KUMAR</h3>
+                    <p><span>T. No:</span> T25162201079</p>
+                    <p><span>Branch:</span> B.Tech CSE (AI & ML)</p>
+                    <p><span>Batch:</span> 2025–2029</p>
+                    <p><span>College:</span> Ganpat University</p>
+                    <p><span>Skills:</span> CSS,Java Script,Project Management. </p>
+                    <p><span>Phone:</span> +91-7352410315</p>
+                    <p><span>Email:</span> nitishkumar031515@gmail.com</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ====== REVIEW SECTION (INTERACTIVE) ====== -->
+    <section id="review" class="review-section">
+        <div class="review-container">
+
+            <h2>Give Your Review</h2>
+
+            <form id="reviewForm">
+                <!-- Top inputs -->
+                <div class="review-input-group">
+                    <input type="text" id="revName" placeholder="Your Name" required>
+                    <input type="email" id="revEmail" placeholder="Your Email" required>
+                    <input type="text" id="revPhone" placeholder="Your Phone / Class">
+                </div>
+
+                <!-- Star rating -->
+                <div class="rating-box" id="ratingStars">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <div class="rating-hint" id="ratingHint">Click a star to rate (1–5)</div>
+
+                <!-- Feedback text -->
+                <textarea id="revMessage" placeholder="Write your feedback here..." required></textarea>
+
+                <!-- Submit -->
+                <button type="submit" class="submit-review">Submit Review</button>
+            </form>
+        </div>
+
+        <!-- Submitted reviews appear here -->
+        <div class="reviews-list" id="reviewsList">
+            <!-- JS will add review cards here -->
+        </div>
+    </section>
+
+
+    <!-- ====== CONTACT SECTION ====== -->
+    <section id="contact">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h2 class="section-title" style="text-align:left;">Contact & Location</h2>
+                <p>
+                    <strong>Address:</strong><br>
+                    Ganpat University, Ganpat Vidyanagar,<br>
+                    Mehsana-Gozaria Highway, Kherva - 384012,<br>
+                    Mehsana, Gujarat, India.
+                </p>
+                <p>
+                    <strong>Phone:</strong> +91-65226635632 <br>
+                    <strong>Email:</strong> info@guni.ac.in
+                </p>
+                <p>
+                    You can also reach out for queries related to admissions, scholarships,
+                    hostel, research, and international collaborations.
+                </p>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send an Enquiry</h3>
+                <div class="form-group">
+                    <label for="name">Full Name*</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email ID*</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Mobile Number*</label>
+                    <input type="tel" id="phone" placeholder="Enter your mobile number">
+                </div>
+                <div class="form-group">
+                    <label for="program">Interested Program Level</label>
+                    <select id="program">
+                        <option>After 10th - Diploma</option>
+                        <option>After 12th - Undergraduate</option>
+                        <option>After Graduation - Postgraduate</option>
+                        <option>Ph.D / Research</option>
+                        <option>Certificate / Short-Term</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Query</label>
+                    <textarea id="message" placeholder="Write your question here"></textarea>
+                </div>
+                <button class="btn btn-primary" style="width:100%;">Submit Enquiry (Demo)</button>
+                <p style="font-size:11px; margin-top:8px;">
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Ganpat University</h4>
+                <p>
+                    A private university in Gujarat offering multidisciplinary education
+                    with a focus on quality, innovation and industry interface.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About University</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#admission">Admissions</a></li>
+                    <li><a href="#campus">Campus Life</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Student Corner</h4>
+                <ul>
+                    <li><a href="https://www.ganpatuniversity.ac.in/exams/latest-exam-notification">Exam Notifications
+                        </a></li>
+                    <li><a href="https://www.ganpatuniversity.ac.in/exams/exam-schedule">Exam Schedule </a></li>
+                    <li><a href="https://www.ganpatuniversity.ac.in/downloads/scholarship-information">Scholarship
+                            Info</a></li>
+                    <li><a href="https://www.ganpatuniversity.ac.in/student-cell/grievance-redressal-committee">Grievance
+                            Redressal </a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Facebook </a></li>
+                    <li><a href="#">LinkedIn </a></li>
+                    <li><a href="#">YouTube </a></li>
+                    <li><a href="#">Instagram </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            &copy; RIGHTS ARE RESERVED .
+            <br>
+            By, ANSHU & NITISH
+        </div>
+    </footer>
+
+    <!-- ====== SMALL JS: DEPARTMENT TOGGLE ====== -->
+    <script>
+        document.querySelectorAll('.dept-card').forEach(function (card) {
+            const header = card.querySelector('.dept-header');
+            const indicator = card.querySelector('.dept-toggle-indicator');
+
+            header.addEventListener('click', function () {
+                const isActive = card.classList.toggle('active');
+                if (indicator) {
+                    indicator.textContent = isActive ? '−' : '+';
+                }
+            });
+        });
+
+        // <!-- ====== JS FOR RATING + SHOW REVIEW ====== -->
+
+        const stars = document.querySelectorAll('#ratingStars .star');
+        const ratingHint = document.getElementById('ratingHint');
+        let selectedRating = 0;
+
+        // Star click
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.getAttribute('data-value'));
+                updateStarUI();
+            });
+        });
+
+        function updateStarUI() {
+            stars.forEach(star => {
+                const val = parseInt(star.getAttribute('data-value'));
+                if (val <= selectedRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+            if (selectedRating === 0) {
+                ratingHint.textContent = "Click a star to rate (1–5)";
+            } else {
+                ratingHint.textContent = "You selected " + selectedRating + " star(s)";
+            }
+        }
+
+        // Form submit
+        const reviewForm = document.getElementById('reviewForm');
+        const reviewsList = document.getElementById('reviewsList');
+
+        reviewForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (selectedRating === 0) {
+                alert('Please select a rating (1–5 stars).');
+                return;
+            }
+
+            const name = document.getElementById('revName').value.trim();
+            const email = document.getElementById('revEmail').value.trim();
+            const phone = document.getElementById('revPhone').value.trim();
+            const message = document.getElementById('revMessage').value.trim();
+
+            // Create review card
+            const card = document.createElement('div');
+            card.className = 'review-item';
+
+            // Build stars string
+            let starsText = '';
+            for (let i = 1; i <= 5; i++) {
+                starsText += i <= selectedRating ? '★' : '☆';
+            }
+
+            card.innerHTML = `
+            <div class="review-header">
+                <div>
+                    <h3>${name || 'Anonymous'}</h3>
+                    <p class="review-meta">
+                        <span>${email || 'No email'}</span>
+                        ${phone ? `<span>${phone}</span>` : ''}
+                    </p>
+                </div>
+                <div class="review-stars">${starsText}</div>
+            </div>
+            <p class="review-message">${message}</p>
+        `;
+
+            reviewsList.prepend(card); // new review on top
+
+            // Reset form + rating
+            reviewForm.reset();
+            selectedRating = 0;
+            updateStarUI();
+        });
+
+    </script>
+
+</body>
+
+</html>
